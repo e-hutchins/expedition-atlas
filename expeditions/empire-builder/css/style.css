@@ -1,0 +1,11 @@
+/* expeditions/empire-builder/css/style.css
+ *
+ * Styles specific to the Empire Builder expedition. Shared layout and
+ * typography come from shared/css/base.css; only this expedition's own
+ * rules belong here.
+ */
+
+#map {
+  width: 100%;
+  height: 80vh;
+}
