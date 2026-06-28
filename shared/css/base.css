@@ -1,0 +1,28 @@
+/* shared/css/base.css
+ *
+ * Base styles shared by the landing page and every expedition.
+ * Only put rules here that genuinely apply across multiple expeditions
+ * (typography, layout primitives, nav). Expedition-specific styling
+ * belongs in that expedition's own css file.
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+a {
+  color: #1a4d8f;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
