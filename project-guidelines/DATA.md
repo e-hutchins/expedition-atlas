@@ -12,11 +12,16 @@
   "expedition": "empire-builder"
 }
 
+### Route
+{
+  "name": "...",
+  "source_url": "..."
+}
+
 ### Station 
 {
   "name": "...",
   "amtrak_code": "...",
-  "arrival": "...",
-  "departure": "...",
-  "elevation_ft": ...
+  "city": "...",
+  "state": "..."
 }

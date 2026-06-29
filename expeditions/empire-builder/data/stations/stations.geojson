@@ -1,4 +1,741 @@
 {
   "type": "FeatureCollection",
-  "features": []
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.468744330773,
+          45.7150256007008
+        ]
+      },
+      "properties": {
+        "name": "Bingen-White Salmon, WA",
+        "amtrak_code": "BNG",
+        "city": "Bingen",
+        "state": "WA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.013164378939,
+          48.5340736767166
+        ]
+      },
+      "properties": {
+        "name": "Browning, MT",
+        "amtrak_code": "BRO",
+        "city": "Browning",
+        "state": "MT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0126153119157,
+          43.340619017281
+        ]
+      },
+      "properties": {
+        "name": "Columbus, WI",
+        "amtrak_code": "CBS",
+        "city": "Columbus",
+        "state": "WI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6410207527603,
+          41.8789998534375
+        ]
+      },
+      "properties": {
+        "name": "Chicago, IL",
+        "amtrak_code": "CHI",
+        "city": "Chicago",
+        "state": "IL"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.3315972575,
+          48.6383707559088
+        ]
+      },
+      "properties": {
+        "name": "Cut Bank, MT",
+        "amtrak_code": "CUT",
+        "city": "Cut Bank",
+        "state": "MT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.8460067609715,
+          46.8197000591244
+        ]
+      },
+      "properties": {
+        "name": "Detroit Lakes, MN",
+        "amtrak_code": "DLK",
+        "city": "Detroit Lakes",
+        "state": "MN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.8613818278891,
+          48.1104759768304
+        ]
+      },
+      "properties": {
+        "name": "Devils Lake, ND",
+        "amtrak_code": "DVL",
+        "city": "Devils Lake",
+        "state": "ND"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.38415595163,
+          47.8110866214587
+        ]
+      },
+      "properties": {
+        "name": "Edmonds, WA",
+        "amtrak_code": "EDM",
+        "city": "Edmonds",
+        "state": "WA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.549281360027,
+          47.3209539010124
+        ]
+      },
+      "properties": {
+        "name": "Ephrata, WA",
+        "amtrak_code": "EPH",
+        "city": "Ephrata",
+        "state": "WA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.610955443431,
+          48.2755495940782
+        ]
+      },
+      "properties": {
+        "name": "Essex, MT",
+        "amtrak_code": "ESM",
+        "city": "Essex",
+        "state": "MT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.197872961542,
+          47.9754066503992
+        ]
+      },
+      "properties": {
+        "name": "Everett, WA",
+        "amtrak_code": "EVR",
+        "city": "Everett",
+        "state": "WA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7853810345584,
+          46.8809899937259
+        ]
+      },
+      "properties": {
+        "name": "Fargo, ND",
+        "amtrak_code": "FAR",
+        "city": "Fargo",
+        "state": "ND"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.11084430646,
+          47.9175300989506
+        ]
+      },
+      "properties": {
+        "name": "Grand Forks, ND",
+        "amtrak_code": "GFK",
+        "city": "Grand Forks",
+        "state": "ND"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.636199855105,
+          48.1948612839986
+        ]
+      },
+      "properties": {
+        "name": "Glasgow, MT",
+        "amtrak_code": "GGW",
+        "city": "Glasgow",
+        "state": "MT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8055678214674,
+          42.0750458774898
+        ]
+      },
+      "properties": {
+        "name": "Glenview, IL",
+        "amtrak_code": "GLN",
+        "city": "Glenview",
+        "state": "IL"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.219536400912,
+          48.44233964813
+        ]
+      },
+      "properties": {
+        "name": "East Glacier Park, MT",
+        "amtrak_code": "GPK",
+        "city": "East Glacier Park",
+        "state": "MT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.678364649309,
+          48.554472019792
+        ]
+      },
+      "properties": {
+        "name": "Havre, MT",
+        "amtrak_code": "HAV",
+        "city": "Havre",
+        "state": "MT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.548903865245,
+          48.3948483993017
+        ]
+      },
+      "properties": {
+        "name": "Libby, MT",
+        "amtrak_code": "LIB",
+        "city": "Libby",
+        "state": "MT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.2473050219321,
+          43.8331629562289
+        ]
+      },
+      "properties": {
+        "name": "La Crosse, WI",
+        "amtrak_code": "LSE",
+        "city": "La Crosse",
+        "state": "WI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.643979614857,
+          47.6064988005714
+        ]
+      },
+      "properties": {
+        "name": "Leavenworth, WA",
+        "amtrak_code": "LWA",
+        "city": "Leavenworth",
+        "state": "WA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -107.872254186826,
+          48.3604841805846
+        ]
+      },
+      "properties": {
+        "name": "Malta, MT",
+        "amtrak_code": "MAL",
+        "city": "Malta",
+        "state": "MT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9171099549385,
+          43.0345260322426
+        ]
+      },
+      "properties": {
+        "name": "Milwaukee-Downtown, WI",
+        "amtrak_code": "MKE",
+        "city": "Milwaukee",
+        "state": "WI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.298567510887,
+          48.2360907803127
+        ]
+      },
+      "properties": {
+        "name": "Minot, ND",
+        "amtrak_code": "MOT",
+        "city": "Minot",
+        "state": "ND"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.0853626957673,
+          44.9476690011535
+        ]
+      },
+      "properties": {
+        "name": "St. Paul-Minneapolis, MN",
+        "amtrak_code": "MSP",
+        "city": "St. Paul",
+        "state": "MN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.67682048385,
+          45.5287294652854
+        ]
+      },
+      "properties": {
+        "name": "Portland, OR",
+        "amtrak_code": "PDX",
+        "city": "Portland",
+        "state": "OR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.4676334694642,
+          43.5470870228406
+        ]
+      },
+      "properties": {
+        "name": "Portage, WI",
+        "amtrak_code": "POG",
+        "city": "Portage",
+        "state": "WI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.087743038805,
+          46.2370178785924
+        ]
+      },
+      "properties": {
+        "name": "Pasco, WA",
+        "amtrak_code": "PSC",
+        "city": "Pasco",
+        "state": "WA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.5370734872464,
+          44.566221982512
+        ]
+      },
+      "properties": {
+        "name": "Red Wing, MN",
+        "amtrak_code": "RDW",
+        "city": "Red Wing",
+        "state": "MN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.9975661878668,
+          48.3698539092826
+        ]
+      },
+      "properties": {
+        "name": "Rugby, ND",
+        "amtrak_code": "RUG",
+        "city": "Rugby",
+        "state": "ND"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.856662124189,
+          48.5067547943533
+        ]
+      },
+      "properties": {
+        "name": "Shelby, MT",
+        "amtrak_code": "SBY",
+        "city": "Shelby",
+        "state": "MT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.1491010865573,
+          45.5677560152891
+        ]
+      },
+      "properties": {
+        "name": "St. Cloud, MN",
+        "amtrak_code": "SCD",
+        "city": "St. Cloud",
+        "state": "MN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33017589156,
+          47.598450616192
+        ]
+      },
+      "properties": {
+        "name": "Seattle, WA",
+        "amtrak_code": "SEA",
+        "city": "Seattle",
+        "state": "WA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.415469050904,
+          47.6567261495359
+        ]
+      },
+      "properties": {
+        "name": "Spokane, WA",
+        "amtrak_code": "SPK",
+        "city": "Spokane",
+        "state": "WA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.795339389368,
+          46.3546090770579
+        ]
+      },
+      "properties": {
+        "name": "Staples, MN",
+        "amtrak_code": "SPL",
+        "city": "Staples",
+        "state": "MN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.545597031997,
+          48.2762402849076
+        ]
+      },
+      "properties": {
+        "name": "Sandpoint, ID",
+        "amtrak_code": "SPT",
+        "city": "Sandpoint",
+        "state": "ID"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.389389814643,
+          48.3198206918447
+        ]
+      },
+      "properties": {
+        "name": "Stanley, ND",
+        "amtrak_code": "STN",
+        "city": "Stanley",
+        "state": "ND"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.5053378254294,
+          43.9860150273712
+        ]
+      },
+      "properties": {
+        "name": "Tomah, WI",
+        "amtrak_code": "TOH",
+        "city": "Tomah",
+        "state": "WI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.686558506296,
+          45.6289064701607
+        ]
+      },
+      "properties": {
+        "name": "Vancouver, WA USA",
+        "amtrak_code": "VAN",
+        "city": "Vancouver",
+        "state": "WA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.777457569936,
+          43.6265170168132
+        ]
+      },
+      "properties": {
+        "name": "Wisconsin Dells, WI",
+        "amtrak_code": "WDL",
+        "city": "Wisconsin Dells",
+        "state": "WI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.30656651377,
+          47.4215618258592
+        ]
+      },
+      "properties": {
+        "name": "Wenatchee, WA",
+        "amtrak_code": "WEN",
+        "city": "Wenatchee",
+        "state": "WA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.335588625142,
+          48.4134805292061
+        ]
+      },
+      "properties": {
+        "name": "Whitefish, MT",
+        "amtrak_code": "WFH",
+        "city": "Whitefish",
+        "state": "MT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.979177571541,
+          48.4962245731381
+        ]
+      },
+      "properties": {
+        "name": "West Glacier, MT",
+        "amtrak_code": "WGL",
+        "city": "West Glacier",
+        "state": "MT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.966156236799,
+          45.6576746483731
+        ]
+      },
+      "properties": {
+        "name": "Wishram, WA",
+        "amtrak_code": "WIH",
+        "city": "Wishram",
+        "state": "WA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.6400801621023,
+          44.044411963296
+        ]
+      },
+      "properties": {
+        "name": "Winona, MN",
+        "amtrak_code": "WIN",
+        "city": "Winona",
+        "state": "MN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.642747591607,
+          48.0916793676117
+        ]
+      },
+      "properties": {
+        "name": "Wolf Point, MT",
+        "amtrak_code": "WPT",
+        "city": "Wolf Point",
+        "state": "MT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.620937095564,
+          48.1430075605057
+        ]
+      },
+      "properties": {
+        "name": "Williston, ND",
+        "amtrak_code": "WTN",
+        "city": "Williston",
+        "state": "ND"
+      }
+    }
+  ]
 }
