@@ -5,4 +5,4 @@
 node_modules/
 .env
 working/
-**/data/raw/
+__pycache__/

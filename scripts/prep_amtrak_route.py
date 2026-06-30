@@ -41,16 +41,8 @@ from pathlib import Path
 
 from shapely.geometry import Point, shape, mapping
 
-SCRIPT_DIR = Path(__file__).parent
-# This script lives at the repo root (scripts/), one level above the
-# expeditions/ folder -- defaults below point at Empire Builder's data,
-# but every path is a CLI flag for prepping a different expedition's data.
-DATA_DIR = SCRIPT_DIR.parent / "expeditions" / "empire-builder" / "data"
-RAW_DATA_DIR = DATA_DIR / "raw"
-
-
-def slugify(name):
-    return name.lower().replace(" ", "-")
+from config import NTAD_DIR, DEFAULT_ROUTE, expedition_data_dir
+from helpers import slugify
 
 
 def parse_station_list(path):
@@ -156,20 +148,24 @@ def prep_stations(route_geom, stations_source, out_path, buffer_deg, station_lis
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--route", default="Empire Builder", help="Route name as it appears in the NTAD routes file")
-    parser.add_argument("--routes-source", type=Path, default=RAW_DATA_DIR / "NTAD_Amtrak_Routes_5503594535609073988.geojson")
-    parser.add_argument("--stations-source", type=Path, default=RAW_DATA_DIR / "NTAD_Amtrak_Stations_8364964222168212810.geojson")
-    parser.add_argument("--route-out", type=Path, default=None, help="Defaults to data/routes/<slugified-route-name>.geojson")
-    parser.add_argument("--stations-out", type=Path, default=DATA_DIR / "stations" / "stations.geojson")
-    parser.add_argument("--station-list", type=Path, default=DATA_DIR / "station_list.md", help="Optional markdown file of official stops, one per line ending in (CODE), used to filter out shared-corridor false positives")
+    parser.add_argument("--route", default=DEFAULT_ROUTE, help="Route name as it appears in the NTAD routes file")
+    parser.add_argument("--expedition", default=None, help="Expedition folder name under expeditions/ -- defaults to the slugified --route name")
+    parser.add_argument("--routes-source", type=Path, default=NTAD_DIR / "NTAD_Amtrak_Routes_5503594535609073988.geojson")
+    parser.add_argument("--stations-source", type=Path, default=NTAD_DIR / "NTAD_Amtrak_Stations_8364964222168212810.geojson")
+    parser.add_argument("--route-out", type=Path, default=None, help="Defaults to <expedition>/data/routes/<slugified-route-name>.geojson")
+    parser.add_argument("--stations-out", type=Path, default=None, help="Defaults to <expedition>/data/stations/stations.geojson")
+    parser.add_argument("--station-list", type=Path, default=None, help="Optional markdown file of official stops, one per line ending in (CODE), used to filter out shared-corridor false positives. Defaults to <expedition>/data/station_list.md")
     parser.add_argument("--simplify-tolerance", type=float, default=0.0005, help="Degrees; ~50m, cuts ~45k points down to ~2.4k")
     parser.add_argument("--station-buffer", type=float, default=0.02, help="Degrees; ~2km, stable result across 0.01-0.05 in testing")
     args = parser.parse_args()
 
-    route_out = args.route_out or (DATA_DIR / "routes" / f"{slugify(args.route)}.geojson")
+    data_dir = expedition_data_dir(args.expedition or slugify(args.route))
+    route_out = args.route_out or (data_dir / "routes" / f"{slugify(args.route)}.geojson")
+    stations_out = args.stations_out or (data_dir / "stations" / "stations.geojson")
+    station_list = args.station_list or (data_dir / "station_list.md")
 
     route_geom = prep_route(args.route, args.routes_source, route_out, args.simplify_tolerance)
-    prep_stations(route_geom, args.stations_source, args.stations_out, args.station_buffer, args.station_list)
+    prep_stations(route_geom, args.stations_source, stations_out, args.station_buffer, station_list)
 
 
 if __name__ == "__main__":

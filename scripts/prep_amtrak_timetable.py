@@ -3,7 +3,8 @@ prep_amtrak_timetable.py
 
 One-off data prep script -- NOT part of the live website. Builds
 per-direction timetable JSON for an Amtrak route from raw GTFS files
-(routes.txt, trips.txt, stop_times.txt, stops.txt) in data/raw/.
+(routes.txt, trips.txt, stop_times.txt, stops.txt) in
+raw-data/amtrak/gtfs/.
 
 GTFS's direction_id is just a 0/1 flag with no fixed real-world
 meaning -- it varies by agency/route. For Empire Builder, direction_id
@@ -31,16 +32,8 @@ import csv
 import json
 from pathlib import Path
 
-SCRIPT_DIR = Path(__file__).parent
-# This script lives at the repo root (scripts/), one level above the
-# expeditions/ folder -- defaults below point at Empire Builder's data,
-# but every path is a CLI flag for prepping a different expedition's data.
-DATA_DIR = SCRIPT_DIR.parent / "expeditions" / "empire-builder" / "data"
-RAW_DATA_DIR = DATA_DIR / "raw"
-
-
-def slugify(name):
-    return name.lower().replace(" ", "-")
+from config import GTFS_DIR, DEFAULT_ROUTE, expedition_data_dir
+from helpers import slugify
 
 
 def read_csv(path):
@@ -99,9 +92,10 @@ def build_timetables(route_name, raw_dir, direction_labels):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--route", default="Empire Builder", help="Route name as it appears in routes.txt (route_long_name)")
-    parser.add_argument("--raw-dir", type=Path, default=RAW_DATA_DIR)
-    parser.add_argument("--out-dir", type=Path, default=DATA_DIR / "timetable")
+    parser.add_argument("--route", default=DEFAULT_ROUTE, help="Route name as it appears in routes.txt (route_long_name)")
+    parser.add_argument("--expedition", default=None, help="Expedition folder name under expeditions/ -- defaults to the slugified --route name")
+    parser.add_argument("--raw-dir", type=Path, default=GTFS_DIR)
+    parser.add_argument("--out-dir", type=Path, default=None, help="Defaults to <expedition>/data/timetable")
     parser.add_argument("--direction-0", default="westbound", help="Label for GTFS direction_id 0 -- verify against headsigns for a new route")
     parser.add_argument("--direction-1", default="eastbound", help="Label for GTFS direction_id 1 -- verify against headsigns for a new route")
     args = parser.parse_args()
@@ -109,10 +103,12 @@ def main():
     direction_labels = {"0": args.direction_0, "1": args.direction_1}
     by_direction = build_timetables(args.route, args.raw_dir, direction_labels)
 
-    args.out_dir.mkdir(parents=True, exist_ok=True)
+    data_dir = expedition_data_dir(args.expedition or slugify(args.route))
+    out_dir = args.out_dir or (data_dir / "timetable")
+    out_dir.mkdir(parents=True, exist_ok=True)
     slug = slugify(args.route)
     for label, trips in by_direction.items():
-        out_path = args.out_dir / f"{slug}-{label}.json"
+        out_path = out_dir / f"{slug}-{label}.json"
         output = {"route": args.route, "direction": label, "trips": trips}
         out_path.write_text(json.dumps(output, indent=2))
         print(f"wrote {out_path} ({len(trips)} trip(s))")

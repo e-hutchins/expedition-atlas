@@ -14,7 +14,8 @@
         "name": "Bingen-White Salmon, WA",
         "amtrak_code": "BNG",
         "city": "Bingen",
-        "state": "WA"
+        "state": "WA",
+        "elevation_ft": 110.0
       }
     },
     {
@@ -30,7 +31,8 @@
         "name": "Browning, MT",
         "amtrak_code": "BRO",
         "city": "Browning",
-        "state": "MT"
+        "state": "MT",
+        "elevation_ft": 4468.0
       }
     },
     {
@@ -46,7 +48,8 @@
         "name": "Columbus, WI",
         "amtrak_code": "CBS",
         "city": "Columbus",
-        "state": "WI"
+        "state": "WI",
+        "elevation_ft": 844.3
       }
     },
     {
@@ -62,7 +65,8 @@
         "name": "Chicago, IL",
         "amtrak_code": "CHI",
         "city": "Chicago",
-        "state": "IL"
+        "state": "IL",
+        "elevation_ft": 593.1
       }
     },
     {
@@ -78,7 +82,8 @@
         "name": "Cut Bank, MT",
         "amtrak_code": "CUT",
         "city": "Cut Bank",
-        "state": "MT"
+        "state": "MT",
+        "elevation_ft": 3754.4
       }
     },
     {
@@ -94,7 +99,8 @@
         "name": "Detroit Lakes, MN",
         "amtrak_code": "DLK",
         "city": "Detroit Lakes",
-        "state": "MN"
+        "state": "MN",
+        "elevation_ft": 1367.1
       }
     },
     {
@@ -110,7 +116,8 @@
         "name": "Devils Lake, ND",
         "amtrak_code": "DVL",
         "city": "Devils Lake",
-        "state": "ND"
+        "state": "ND",
+        "elevation_ft": 1466.5
       }
     },
     {
@@ -126,7 +133,8 @@
         "name": "Edmonds, WA",
         "amtrak_code": "EDM",
         "city": "Edmonds",
-        "state": "WA"
+        "state": "WA",
+        "elevation_ft": 13.0
       }
     },
     {
@@ -142,7 +150,8 @@
         "name": "Ephrata, WA",
         "amtrak_code": "EPH",
         "city": "Ephrata",
-        "state": "WA"
+        "state": "WA",
+        "elevation_ft": 1276.9
       }
     },
     {
@@ -158,7 +167,8 @@
         "name": "Essex, MT",
         "amtrak_code": "ESM",
         "city": "Essex",
-        "state": "MT"
+        "state": "MT",
+        "elevation_ft": 3877.5
       }
     },
     {
@@ -174,7 +184,8 @@
         "name": "Everett, WA",
         "amtrak_code": "EVR",
         "city": "Everett",
-        "state": "WA"
+        "state": "WA",
+        "elevation_ft": 60.3
       }
     },
     {
@@ -190,7 +201,8 @@
         "name": "Fargo, ND",
         "amtrak_code": "FAR",
         "city": "Fargo",
-        "state": "ND"
+        "state": "ND",
+        "elevation_ft": 906.2
       }
     },
     {
@@ -206,7 +218,8 @@
         "name": "Grand Forks, ND",
         "amtrak_code": "GFK",
         "city": "Grand Forks",
-        "state": "ND"
+        "state": "ND",
+        "elevation_ft": 842.1
       }
     },
     {
@@ -222,7 +235,8 @@
         "name": "Glasgow, MT",
         "amtrak_code": "GGW",
         "city": "Glasgow",
-        "state": "MT"
+        "state": "MT",
+        "elevation_ft": 2093.7
       }
     },
     {
@@ -238,7 +252,8 @@
         "name": "Glenview, IL",
         "amtrak_code": "GLN",
         "city": "Glenview",
-        "state": "IL"
+        "state": "IL",
+        "elevation_ft": 633.7
       }
     },
     {
@@ -254,7 +269,8 @@
         "name": "East Glacier Park, MT",
         "amtrak_code": "GPK",
         "city": "East Glacier Park",
-        "state": "MT"
+        "state": "MT",
+        "elevation_ft": 4811.0
       }
     },
     {
@@ -270,7 +286,8 @@
         "name": "Havre, MT",
         "amtrak_code": "HAV",
         "city": "Havre",
-        "state": "MT"
+        "state": "MT",
+        "elevation_ft": 2488.0
       }
     },
     {
@@ -286,7 +303,8 @@
         "name": "Libby, MT",
         "amtrak_code": "LIB",
         "city": "Libby",
-        "state": "MT"
+        "state": "MT",
+        "elevation_ft": 2067.8
       }
     },
     {
@@ -302,7 +320,8 @@
         "name": "La Crosse, WI",
         "amtrak_code": "LSE",
         "city": "La Crosse",
-        "state": "WI"
+        "state": "WI",
+        "elevation_ft": 648.5
       }
     },
     {
@@ -318,7 +337,8 @@
         "name": "Leavenworth, WA",
         "amtrak_code": "LWA",
         "city": "Leavenworth",
-        "state": "WA"
+        "state": "WA",
+        "elevation_ft": 1224.8
       }
     },
     {
@@ -334,7 +354,8 @@
         "name": "Malta, MT",
         "amtrak_code": "MAL",
         "city": "Malta",
-        "state": "MT"
+        "state": "MT",
+        "elevation_ft": 2253.8
       }
     },
     {
@@ -350,7 +371,8 @@
         "name": "Milwaukee-Downtown, WI",
         "amtrak_code": "MKE",
         "city": "Milwaukee",
-        "state": "WI"
+        "state": "WI",
+        "elevation_ft": 587.2
       }
     },
     {
@@ -366,7 +388,8 @@
         "name": "Minot, ND",
         "amtrak_code": "MOT",
         "city": "Minot",
-        "state": "ND"
+        "state": "ND",
+        "elevation_ft": 1558.0
       }
     },
     {
@@ -382,7 +405,8 @@
         "name": "St. Paul-Minneapolis, MN",
         "amtrak_code": "MSP",
         "city": "St. Paul",
-        "state": "MN"
+        "state": "MN",
+        "elevation_ft": 708.8
       }
     },
     {
@@ -398,7 +422,8 @@
         "name": "Portland, OR",
         "amtrak_code": "PDX",
         "city": "Portland",
-        "state": "OR"
+        "state": "OR",
+        "elevation_ft": 34.4
       }
     },
     {
@@ -414,7 +439,8 @@
         "name": "Portage, WI",
         "amtrak_code": "POG",
         "city": "Portage",
-        "state": "WI"
+        "state": "WI",
+        "elevation_ft": 812.4
       }
     },
     {
@@ -430,7 +456,8 @@
         "name": "Pasco, WA",
         "amtrak_code": "PSC",
         "city": "Pasco",
-        "state": "WA"
+        "state": "WA",
+        "elevation_ft": 387.2
       }
     },
     {
@@ -446,7 +473,8 @@
         "name": "Red Wing, MN",
         "amtrak_code": "RDW",
         "city": "Red Wing",
-        "state": "MN"
+        "state": "MN",
+        "elevation_ft": 684.4
       }
     },
     {
@@ -462,7 +490,8 @@
         "name": "Rugby, ND",
         "amtrak_code": "RUG",
         "city": "Rugby",
-        "state": "ND"
+        "state": "ND",
+        "elevation_ft": 1560.6
       }
     },
     {
@@ -478,7 +507,8 @@
         "name": "Shelby, MT",
         "amtrak_code": "SBY",
         "city": "Shelby",
-        "state": "MT"
+        "state": "MT",
+        "elevation_ft": 3280.2
       }
     },
     {
@@ -494,7 +524,8 @@
         "name": "St. Cloud, MN",
         "amtrak_code": "SCD",
         "city": "St. Cloud",
-        "state": "MN"
+        "state": "MN",
+        "elevation_ft": 1028.0
       }
     },
     {
@@ -510,7 +541,8 @@
         "name": "Seattle, WA",
         "amtrak_code": "SEA",
         "city": "Seattle",
-        "state": "WA"
+        "state": "WA",
+        "elevation_ft": 18.0
       }
     },
     {
@@ -526,7 +558,8 @@
         "name": "Spokane, WA",
         "amtrak_code": "SPK",
         "city": "Spokane",
-        "state": "WA"
+        "state": "WA",
+        "elevation_ft": 1910.1
       }
     },
     {
@@ -542,7 +575,8 @@
         "name": "Staples, MN",
         "amtrak_code": "SPL",
         "city": "Staples",
-        "state": "MN"
+        "state": "MN",
+        "elevation_ft": 1277.9
       }
     },
     {
@@ -558,7 +592,8 @@
         "name": "Sandpoint, ID",
         "amtrak_code": "SPT",
         "city": "Sandpoint",
-        "state": "ID"
+        "state": "ID",
+        "elevation_ft": 2093.2
       }
     },
     {
@@ -574,7 +609,8 @@
         "name": "Stanley, ND",
         "amtrak_code": "STN",
         "city": "Stanley",
-        "state": "ND"
+        "state": "ND",
+        "elevation_ft": 2253.5
       }
     },
     {
@@ -590,7 +626,8 @@
         "name": "Tomah, WI",
         "amtrak_code": "TOH",
         "city": "Tomah",
-        "state": "WI"
+        "state": "WI",
+        "elevation_ft": 959.1
       }
     },
     {
@@ -606,7 +643,8 @@
         "name": "Vancouver, WA USA",
         "amtrak_code": "VAN",
         "city": "Vancouver",
-        "state": "WA"
+        "state": "WA",
+        "elevation_ft": 52.4
       }
     },
     {
@@ -622,7 +660,8 @@
         "name": "Wisconsin Dells, WI",
         "amtrak_code": "WDL",
         "city": "Wisconsin Dells",
-        "state": "WI"
+        "state": "WI",
+        "elevation_ft": 896.5
       }
     },
     {
@@ -638,7 +677,8 @@
         "name": "Wenatchee, WA",
         "amtrak_code": "WEN",
         "city": "Wenatchee",
-        "state": "WA"
+        "state": "WA",
+        "elevation_ft": 650.1
       }
     },
     {
@@ -654,7 +694,8 @@
         "name": "Whitefish, MT",
         "amtrak_code": "WFH",
         "city": "Whitefish",
-        "state": "MT"
+        "state": "MT",
+        "elevation_ft": 3037.2
       }
     },
     {
@@ -670,7 +711,8 @@
         "name": "West Glacier, MT",
         "amtrak_code": "WGL",
         "city": "West Glacier",
-        "state": "MT"
+        "state": "MT",
+        "elevation_ft": 3219.8
       }
     },
     {
@@ -686,7 +728,8 @@
         "name": "Wishram, WA",
         "amtrak_code": "WIH",
         "city": "Wishram",
-        "state": "WA"
+        "state": "WA",
+        "elevation_ft": 175.6
       }
     },
     {
@@ -702,7 +745,8 @@
         "name": "Winona, MN",
         "amtrak_code": "WIN",
         "city": "Winona",
-        "state": "MN"
+        "state": "MN",
+        "elevation_ft": 655.9
       }
     },
     {
@@ -718,7 +762,8 @@
         "name": "Wolf Point, MT",
         "amtrak_code": "WPT",
         "city": "Wolf Point",
-        "state": "MT"
+        "state": "MT",
+        "elevation_ft": 2002.7
       }
     },
     {
@@ -734,7 +779,8 @@
         "name": "Williston, ND",
         "amtrak_code": "WTN",
         "city": "Williston",
-        "state": "ND"
+        "state": "ND",
+        "elevation_ft": 1861.1
       }
     }
   ]

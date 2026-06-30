@@ -24,12 +24,25 @@
        initialization, layers, and controls are added in a later pass. -->
   <div id="map"></div>
 
+  <!-- Elevation profile chart. Hidden by js/elevation-profile.js if no
+       elevation data has been generated yet (see scripts/prep_elevation.py). -->
+  <div id="elevation-profile-container" class="container">
+    <h2>Elevation profile</h2>
+    <canvas id="elevation-profile-chart"></canvas>
+  </div>
+
   <script
     src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""
   ></script>
+  <!-- Chart.js, via CDN per the no-build-step tech stack. No integrity
+       hash here -- unlike the Leaflet tags above, this one wasn't
+       computed against the actual fetched file (network-restricted
+       sandbox), so add one yourself if you want SRI on this tag too. -->
+  <script src="https://unpkg.com/chart.js@4.4.4/dist/chart.umd.js"></script>
   <script src="../../shared/js/geojson-layer.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/elevation-profile.js"></script>
 </body>
 </html>

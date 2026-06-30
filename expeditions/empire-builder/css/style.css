@@ -28,3 +28,29 @@
   border-radius: 2px;
   vertical-align: middle;
 }
+
+/* Direction toggle control added by js/main.js (addDirectionToggle) */
+.direction-toggle {
+  background: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.direction-toggle label {
+  display: block;
+  cursor: pointer;
+}
+
+/* Elevation profile chart, populated by js/elevation-profile.js. Hidden
+ * by that script if no elevation data has been generated yet. */
+#elevation-profile-container {
+  max-width: 900px;
+  margin: 1.5rem auto;
+}
+
+#elevation-profile-chart {
+  max-height: 300px;
+}

@@ -1,0 +1,378 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6386255917863,
+          41.8786208960517
+        ]
+      },
+      "properties": {
+        "mile": 0.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.15900156494476,
+          43.07213489305862
+        ]
+      },
+      "properties": {
+        "mile": 100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.84732620044332,
+          43.68206758312964
+        ]
+      },
+      "properties": {
+        "mile": 200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.50608487395343,
+          44.0109403408235
+        ]
+      },
+      "properties": {
+        "mile": 300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.99019901479801,
+          44.84986055649777
+        ]
+      },
+      "properties": {
+        "mile": 400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.24533228286595,
+          45.778446312236824
+        ]
+      },
+      "properties": {
+        "mile": 500
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.69409121082512,
+          46.71225926455205
+        ]
+      },
+      "properties": {
+        "mile": 600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.06502899623513,
+          47.42765719818875
+        ]
+      },
+      "properties": {
+        "mile": 700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.46795044947618,
+          48.049539916523486
+        ]
+      },
+      "properties": {
+        "mile": 800
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -100.51524149462794,
+          48.32712932757116
+        ]
+      },
+      "properties": {
+        "mile": 900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.59421544204042,
+          48.32714155031621
+        ]
+      },
+      "properties": {
+        "mile": 1000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.33892786309144,
+          48.14005977990329
+        ]
+      },
+      "properties": {
+        "mile": 1100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.40927410334109,
+          48.14541401539133
+        ]
+      },
+      "properties": {
+        "mile": 1200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.34274871401291,
+          48.436201390495384
+        ]
+      },
+      "properties": {
+        "mile": 1300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.43822411732756,
+          48.556961940587364
+        ]
+      },
+      "properties": {
+        "mile": 1400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.49104280673961,
+          48.63587949079991
+        ]
+      },
+      "properties": {
+        "mile": 1500
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.0449661969268,
+          48.45130709867432
+        ]
+      },
+      "properties": {
+        "mile": 1600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.3072100615401,
+          48.28895630936142
+        ]
+      },
+      "properties": {
+        "mile": 1700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.56712343965349,
+          48.30528541628436
+        ]
+      },
+      "properties": {
+        "mile": 1800
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.9495746851909,
+          47.507099339521076
+        ]
+      },
+      "properties": {
+        "mile": 1900,
+        "branch": "seattle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.76365485624231,
+          47.24604192301578
+        ]
+      },
+      "properties": {
+        "mile": 2000,
+        "branch": "seattle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.19694535207918,
+          47.71376832971339
+        ]
+      },
+      "properties": {
+        "mile": 2100,
+        "branch": "seattle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.329440335734,
+          47.5963013692978
+        ]
+      },
+      "properties": {
+        "mile": 2193.2,
+        "branch": "seattle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.83614060677935,
+          47.38120697565031
+        ]
+      },
+      "properties": {
+        "mile": 1900,
+        "branch": "portland"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.05407777307586,
+          46.41212180742766
+        ]
+      },
+      "properties": {
+        "mile": 2000,
+        "branch": "portland"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.24521349384639,
+          45.72752732106154
+        ]
+      },
+      "properties": {
+        "mile": 2100,
+        "branch": "portland"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.03514272885472,
+          45.61837034452837
+        ]
+      },
+      "properties": {
+        "mile": 2200,
+        "branch": "portland"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.673348451259,
+          45.5274512051907
+        ]
+      },
+      "properties": {
+        "mile": 2243.7,
+        "branch": "portland"
+      }
+    }
+  ]
+}
