@@ -37,7 +37,10 @@ README for what to download and where). Pulls one named route out of
 the nationwide NTAD routes export, simplifies its geometry, and
 spatial-joins nationwide stations against it -- then drops any match
 not on `data/station_list.md` (catches shared-corridor false positives
-like a station on a connecting service's track).
+like a station on a connecting service's track). Each matched station
+also gets a `mile` (and, past a fork, `branch`) property: its distance
+along the route from `--start`, computed the same way as
+`prep_mile_markers.py`'s markers (see below).
 
 Requires `shapely` (`pip install shapely`).
 
@@ -50,15 +53,24 @@ python3 scripts/prep_amtrak_route.py
 
 This overwrites `expeditions/empire-builder/data/routes/empire-builder.geojson`
 and `expeditions/empire-builder/data/stations/stations.geojson`. Run it
-again whenever the raw NTAD files change.
+again whenever the raw NTAD files change. Note that this regenerates
+`stations.geojson` from scratch, so it does NOT preserve `elevation_ft`
+-- re-run `prep_elevation.py --mode apply-stations` afterward to add it
+back (no network call needed, since elevation is cached separately --
+see prep_elevation.py below).
 
 To prep a different Amtrak route into its own expedition folder, pass
-`--route` and `--expedition` (otherwise it'll look for a route named
-"Empire Builder" and overwrite the Empire Builder route file):
+`--route`, `--expedition`, and `--start`/`--branch` (otherwise it'll
+look for a route named "Empire Builder" and overwrite the Empire
+Builder route file). `--start`/`--branch` are required together for
+any route other than Empire Builder, for the same reason as
+`prep_mile_markers.py`/`prep_elevation.py` below -- there's no way to
+derive a route's geography from its name alone:
 
 ```
 python3 scripts/prep_amtrak_route.py \
-  --route "California Zephyr" --expedition california-zephyr
+  --route "California Zephyr" --expedition california-zephyr \
+  --start "-87.6298,41.8786" --branch "emeryville:-122.2885,37.8406"
 ```
 
 A station list for that route isn't required -- if `--station-list`
@@ -138,29 +150,47 @@ python3 scripts/prep_mile_markers.py \
 
 Looks up elevation from the [USGS Elevation Point Query Service](https://epqs.nationalmap.gov/v1/docs)
 (free, no API key, backed by the 3DEP dataset, ~0.5m RMSE accuracy,
-US-only -- fine for an Amtrak route). It has two modes: `stations` adds
-`elevation_ft` to every feature in `stations.geojson`, and `profile`
-samples the route (same fork-handling as `prep_mile_markers.py`) and
-writes an elevation-profile JSON for the chart on the map page.
+US-only -- fine for an Amtrak route). It has three modes:
 
-EPQS has no batch endpoint, so this queries one point at a time with a
-short delay between requests as a courtesy to the free service -- a
-full profile run (a few hundred points) can take several minutes. Each
-request retries a few times with a short backoff on timeout/connection
-errors before giving up, so a transient drop doesn't kill the whole
-run. **This script needs outbound network access to
-`epqs.nationalmap.gov`; run it from your own machine, not a
-network-restricted environment.**
+- `fetch-stations` queries EPQS once per station and writes the results
+  to a standalone cache file, keyed by `amtrak_code`
+  (`data/elevation/<route>-station-elevations.json`). Doesn't touch
+  `stations.geojson`.
+- `apply-stations` merges that cache file's `elevation_ft` into
+  `stations.geojson` by `amtrak_code` -- no network calls, so it's safe
+  to re-run every time `stations.geojson` is regenerated (e.g. by
+  `prep_amtrak_route.py`, which doesn't preserve `elevation_ft`).
+- `profile` samples the route (same fork-handling as
+  `prep_mile_markers.py`) and writes an elevation-profile JSON for the
+  chart on the map page.
+
+Station elevation used to be fetched and written in one step, which
+meant every `stations.geojson` rebuild re-queried EPQS for all ~46
+stations even though elevation never changes. Splitting fetch from
+apply means a rebuild only needs the instant, network-free apply step.
+
+EPQS has no batch endpoint, so `fetch-stations`/`profile` query one
+point at a time with a short delay between requests as a courtesy to
+the free service -- a full profile run (a few hundred points) can take
+several minutes. Each request retries a few times with a short backoff
+on timeout/connection errors before giving up, so a transient drop
+doesn't kill the whole run. **This script needs outbound network
+access to `epqs.nationalmap.gov`; run `fetch-stations`/`profile` from
+your own machine, not a network-restricted environment** (`apply-stations`
+makes no network calls, so it's fine to run anywhere).
 
 Requires only the Python standard library.
 
 ```
-python3 scripts/prep_elevation.py --mode stations
+python3 scripts/prep_elevation.py --mode fetch-stations
+python3 scripts/prep_elevation.py --mode apply-stations
 python3 scripts/prep_elevation.py --mode profile --interval-miles 5
 ```
 
-This overwrites `expeditions/empire-builder/data/stations/stations.geojson`
-(adding `elevation_ft`) and writes
+This writes `expeditions/empire-builder/data/elevation/empire-builder-station-elevations.json`
+(the cache), then `apply-stations` overwrites
+`expeditions/empire-builder/data/stations/stations.geojson` (adding
+`elevation_ft`) from it. `profile` writes
 `expeditions/empire-builder/data/elevation/empire-builder-profile.json`.
 Until you run `profile` mode, that file stays at its placeholder
 `"points": []` state and the elevation-profile chart on the page just

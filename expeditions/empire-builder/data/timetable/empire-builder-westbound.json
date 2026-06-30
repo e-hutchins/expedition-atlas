@@ -14,7 +14,8 @@
           "lon": -87.639443,
           "stop_sequence": 1,
           "arrival_time": "16:05:00",
-          "departure_time": "16:05:00"
+          "departure_time": "16:05:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "GLN",
@@ -23,7 +24,8 @@
           "lon": -87.805562,
           "stop_sequence": 2,
           "arrival_time": "16:29:00",
-          "departure_time": "16:29:00"
+          "departure_time": "16:29:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "MKE",
@@ -32,7 +34,8 @@
           "lon": -87.917104,
           "stop_sequence": 3,
           "arrival_time": "17:35:00",
-          "departure_time": "17:45:00"
+          "departure_time": "17:45:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "CBS",
@@ -41,7 +44,8 @@
           "lon": -89.012609,
           "stop_sequence": 4,
           "arrival_time": "18:55:00",
-          "departure_time": "18:55:00"
+          "departure_time": "18:55:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "POG",
@@ -50,7 +54,8 @@
           "lon": -89.467627,
           "stop_sequence": 5,
           "arrival_time": "19:24:00",
-          "departure_time": "19:24:00"
+          "departure_time": "19:24:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "WDL",
@@ -59,7 +64,8 @@
           "lon": -89.777451,
           "stop_sequence": 6,
           "arrival_time": "19:42:00",
-          "departure_time": "19:42:00"
+          "departure_time": "19:42:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "TOH",
@@ -68,7 +74,8 @@
           "lon": -90.505331,
           "stop_sequence": 7,
           "arrival_time": "20:20:00",
-          "departure_time": "20:20:00"
+          "departure_time": "20:20:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "LSE",
@@ -77,7 +84,8 @@
           "lon": -91.247298,
           "stop_sequence": 8,
           "arrival_time": "21:04:00",
-          "departure_time": "21:04:00"
+          "departure_time": "21:04:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "WIN",
@@ -86,7 +94,8 @@
           "lon": -91.640073,
           "stop_sequence": 9,
           "arrival_time": "21:34:00",
-          "departure_time": "21:40:00"
+          "departure_time": "21:40:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "RDW",
@@ -95,7 +104,8 @@
           "lon": -92.537066,
           "stop_sequence": 10,
           "arrival_time": "22:42:00",
-          "departure_time": "22:42:00"
+          "departure_time": "22:42:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "MSP",
@@ -104,7 +114,8 @@
           "lon": -93.085355,
           "stop_sequence": 11,
           "arrival_time": "23:56:00",
-          "departure_time": "24:13:00"
+          "departure_time": "24:13:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "SCD",
@@ -113,7 +124,8 @@
           "lon": -94.149093,
           "stop_sequence": 12,
           "arrival_time": "26:09:00",
-          "departure_time": "26:09:00"
+          "departure_time": "26:09:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "SPL",
@@ -122,7 +134,8 @@
           "lon": -94.795331,
           "stop_sequence": 13,
           "arrival_time": "27:10:00",
-          "departure_time": "27:10:00"
+          "departure_time": "27:10:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "DLK",
@@ -131,7 +144,8 @@
           "lon": -95.845998,
           "stop_sequence": 14,
           "arrival_time": "28:06:00",
-          "departure_time": "28:06:00"
+          "departure_time": "28:06:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "FAR",
@@ -140,7 +154,8 @@
           "lon": -96.785372,
           "stop_sequence": 15,
           "arrival_time": "29:13:00",
-          "departure_time": "29:13:00"
+          "departure_time": "29:13:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "GFK",
@@ -149,7 +164,8 @@
           "lon": -97.110835,
           "stop_sequence": 16,
           "arrival_time": "30:34:00",
-          "departure_time": "30:34:00"
+          "departure_time": "30:34:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "DVL",
@@ -158,7 +174,8 @@
           "lon": -98.861372,
           "stop_sequence": 17,
           "arrival_time": "31:59:00",
-          "departure_time": "31:59:00"
+          "departure_time": "31:59:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "RUG",
@@ -167,7 +184,8 @@
           "lon": -99.997556,
           "stop_sequence": 18,
           "arrival_time": "32:53:00",
-          "departure_time": "32:53:00"
+          "departure_time": "32:53:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "MOT",
@@ -176,7 +194,8 @@
           "lon": -101.298557,
           "stop_sequence": 19,
           "arrival_time": "34:06:00",
-          "departure_time": "34:51:00"
+          "departure_time": "34:51:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "STN",
@@ -185,7 +204,8 @@
           "lon": -102.389379,
           "stop_sequence": 20,
           "arrival_time": "35:46:00",
-          "departure_time": "35:46:00"
+          "departure_time": "35:46:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "WTN",
@@ -194,7 +214,8 @@
           "lon": -103.620926,
           "stop_sequence": 21,
           "arrival_time": "36:59:00",
-          "departure_time": "36:59:00"
+          "departure_time": "36:59:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "WPT",
@@ -203,7 +224,8 @@
           "lon": -105.642736,
           "stop_sequence": 22,
           "arrival_time": "38:34:00",
-          "departure_time": "38:34:00"
+          "departure_time": "38:34:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "GGW",
@@ -212,7 +234,8 @@
           "lon": -106.636188,
           "stop_sequence": 23,
           "arrival_time": "39:20:00",
-          "departure_time": "39:20:00"
+          "departure_time": "39:20:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "MAL",
@@ -221,7 +244,8 @@
           "lon": -107.872242,
           "stop_sequence": 24,
           "arrival_time": "40:20:00",
-          "departure_time": "40:20:00"
+          "departure_time": "40:20:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "HAV",
@@ -230,7 +254,8 @@
           "lon": -109.678352,
           "stop_sequence": 25,
           "arrival_time": "41:54:00",
-          "departure_time": "42:15:00"
+          "departure_time": "42:15:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "SBY",
@@ -239,7 +264,8 @@
           "lon": -111.856649,
           "stop_sequence": 26,
           "arrival_time": "44:13:00",
-          "departure_time": "44:21:00"
+          "departure_time": "44:21:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "CUT",
@@ -248,7 +274,8 @@
           "lon": -112.331584,
           "stop_sequence": 27,
           "arrival_time": "44:51:00",
-          "departure_time": "44:51:00"
+          "departure_time": "44:51:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "GPK",
@@ -257,7 +284,8 @@
           "lon": -113.219523,
           "stop_sequence": 28,
           "arrival_time": "45:48:00",
-          "departure_time": "45:48:00"
+          "departure_time": "45:48:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "ESM",
@@ -266,7 +294,8 @@
           "lon": -113.610942,
           "stop_sequence": 29,
           "arrival_time": "46:44:00",
-          "departure_time": "46:44:00"
+          "departure_time": "46:44:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "WGL",
@@ -275,7 +304,8 @@
           "lon": -113.979164,
           "stop_sequence": 30,
           "arrival_time": "47:27:00",
-          "departure_time": "47:27:00"
+          "departure_time": "47:27:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "WFH",
@@ -284,7 +314,8 @@
           "lon": -114.335575,
           "stop_sequence": 31,
           "arrival_time": "48:06:00",
-          "departure_time": "48:21:00"
+          "departure_time": "48:21:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "LIB",
@@ -293,7 +324,8 @@
           "lon": -115.54889,
           "stop_sequence": 32,
           "arrival_time": "50:05:00",
-          "departure_time": "50:05:00"
+          "departure_time": "50:05:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "SPT",
@@ -302,7 +334,8 @@
           "lon": -116.545583,
           "stop_sequence": 33,
           "arrival_time": "51:55:00",
-          "departure_time": "51:55:00"
+          "departure_time": "51:55:00",
+          "stop_timezone": "America/Los_Angeles"
         },
         {
           "stop_id": "SPK",
@@ -311,7 +344,8 @@
           "lon": -117.415455,
           "stop_sequence": 34,
           "arrival_time": "53:44:00",
-          "departure_time": "54:49:00"
+          "departure_time": "54:49:00",
+          "stop_timezone": "America/Los_Angeles"
         },
         {
           "stop_id": "PSC",
@@ -320,7 +354,8 @@
           "lon": -119.087729,
           "stop_sequence": 35,
           "arrival_time": "57:40:00",
-          "departure_time": "57:40:00"
+          "departure_time": "57:40:00",
+          "stop_timezone": "America/Los_Angeles"
         },
         {
           "stop_id": "WIH",
@@ -329,7 +364,8 @@
           "lon": -120.966142,
           "stop_sequence": 36,
           "arrival_time": "59:35:00",
-          "departure_time": "59:35:00"
+          "departure_time": "59:35:00",
+          "stop_timezone": "America/Los_Angeles"
         },
         {
           "stop_id": "BNG",
@@ -338,7 +374,8 @@
           "lon": -121.46873,
           "stop_sequence": 37,
           "arrival_time": "60:10:00",
-          "departure_time": "60:10:00"
+          "departure_time": "60:10:00",
+          "stop_timezone": "America/Los_Angeles"
         },
         {
           "stop_id": "VAN",
@@ -347,7 +384,8 @@
           "lon": -122.686544,
           "stop_sequence": 38,
           "arrival_time": "61:35:00",
-          "departure_time": "61:35:00"
+          "departure_time": "61:35:00",
+          "stop_timezone": "America/Los_Angeles"
         },
         {
           "stop_id": "PDX",
@@ -356,7 +394,8 @@
           "lon": -122.676806,
           "stop_sequence": 39,
           "arrival_time": "62:17:00",
-          "departure_time": "62:17:00"
+          "departure_time": "62:17:00",
+          "stop_timezone": "America/Los_Angeles"
         }
       ]
     },
@@ -372,7 +411,8 @@
           "lon": -87.639443,
           "stop_sequence": 1,
           "arrival_time": "16:05:00",
-          "departure_time": "16:05:00"
+          "departure_time": "16:05:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "GLN",
@@ -381,7 +421,8 @@
           "lon": -87.805562,
           "stop_sequence": 2,
           "arrival_time": "16:29:00",
-          "departure_time": "16:29:00"
+          "departure_time": "16:29:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "MKE",
@@ -390,7 +431,8 @@
           "lon": -87.917104,
           "stop_sequence": 3,
           "arrival_time": "17:35:00",
-          "departure_time": "17:45:00"
+          "departure_time": "17:45:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "CBS",
@@ -399,7 +441,8 @@
           "lon": -89.012609,
           "stop_sequence": 4,
           "arrival_time": "18:55:00",
-          "departure_time": "18:55:00"
+          "departure_time": "18:55:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "POG",
@@ -408,7 +451,8 @@
           "lon": -89.467627,
           "stop_sequence": 5,
           "arrival_time": "19:24:00",
-          "departure_time": "19:24:00"
+          "departure_time": "19:24:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "WDL",
@@ -417,7 +461,8 @@
           "lon": -89.777451,
           "stop_sequence": 6,
           "arrival_time": "19:42:00",
-          "departure_time": "19:42:00"
+          "departure_time": "19:42:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "TOH",
@@ -426,7 +471,8 @@
           "lon": -90.505331,
           "stop_sequence": 7,
           "arrival_time": "20:20:00",
-          "departure_time": "20:20:00"
+          "departure_time": "20:20:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "LSE",
@@ -435,7 +481,8 @@
           "lon": -91.247298,
           "stop_sequence": 8,
           "arrival_time": "21:04:00",
-          "departure_time": "21:04:00"
+          "departure_time": "21:04:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "WIN",
@@ -444,7 +491,8 @@
           "lon": -91.640073,
           "stop_sequence": 9,
           "arrival_time": "21:34:00",
-          "departure_time": "21:40:00"
+          "departure_time": "21:40:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "RDW",
@@ -453,7 +501,8 @@
           "lon": -92.537066,
           "stop_sequence": 10,
           "arrival_time": "22:42:00",
-          "departure_time": "22:42:00"
+          "departure_time": "22:42:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "MSP",
@@ -462,7 +511,8 @@
           "lon": -93.085355,
           "stop_sequence": 11,
           "arrival_time": "23:56:00",
-          "departure_time": "24:13:00"
+          "departure_time": "24:13:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "SCD",
@@ -471,7 +521,8 @@
           "lon": -94.149093,
           "stop_sequence": 12,
           "arrival_time": "26:09:00",
-          "departure_time": "26:09:00"
+          "departure_time": "26:09:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "SPL",
@@ -480,7 +531,8 @@
           "lon": -94.795331,
           "stop_sequence": 13,
           "arrival_time": "27:10:00",
-          "departure_time": "27:10:00"
+          "departure_time": "27:10:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "DLK",
@@ -489,7 +541,8 @@
           "lon": -95.845998,
           "stop_sequence": 14,
           "arrival_time": "28:06:00",
-          "departure_time": "28:06:00"
+          "departure_time": "28:06:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "FAR",
@@ -498,7 +551,8 @@
           "lon": -96.785372,
           "stop_sequence": 15,
           "arrival_time": "29:13:00",
-          "departure_time": "29:13:00"
+          "departure_time": "29:13:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "GFK",
@@ -507,7 +561,8 @@
           "lon": -97.110835,
           "stop_sequence": 16,
           "arrival_time": "30:34:00",
-          "departure_time": "30:34:00"
+          "departure_time": "30:34:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "DVL",
@@ -516,7 +571,8 @@
           "lon": -98.861372,
           "stop_sequence": 17,
           "arrival_time": "31:59:00",
-          "departure_time": "31:59:00"
+          "departure_time": "31:59:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "RUG",
@@ -525,7 +581,8 @@
           "lon": -99.997556,
           "stop_sequence": 18,
           "arrival_time": "32:53:00",
-          "departure_time": "32:53:00"
+          "departure_time": "32:53:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "MOT",
@@ -534,7 +591,8 @@
           "lon": -101.298557,
           "stop_sequence": 19,
           "arrival_time": "34:06:00",
-          "departure_time": "34:51:00"
+          "departure_time": "34:51:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "STN",
@@ -543,7 +601,8 @@
           "lon": -102.389379,
           "stop_sequence": 20,
           "arrival_time": "35:46:00",
-          "departure_time": "35:46:00"
+          "departure_time": "35:46:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "WTN",
@@ -552,7 +611,8 @@
           "lon": -103.620926,
           "stop_sequence": 21,
           "arrival_time": "36:59:00",
-          "departure_time": "36:59:00"
+          "departure_time": "36:59:00",
+          "stop_timezone": "America/Chicago"
         },
         {
           "stop_id": "WPT",
@@ -561,7 +621,8 @@
           "lon": -105.642736,
           "stop_sequence": 22,
           "arrival_time": "38:34:00",
-          "departure_time": "38:34:00"
+          "departure_time": "38:34:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "GGW",
@@ -570,7 +631,8 @@
           "lon": -106.636188,
           "stop_sequence": 23,
           "arrival_time": "39:20:00",
-          "departure_time": "39:20:00"
+          "departure_time": "39:20:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "MAL",
@@ -579,7 +641,8 @@
           "lon": -107.872242,
           "stop_sequence": 24,
           "arrival_time": "40:20:00",
-          "departure_time": "40:20:00"
+          "departure_time": "40:20:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "HAV",
@@ -588,7 +651,8 @@
           "lon": -109.678352,
           "stop_sequence": 25,
           "arrival_time": "41:54:00",
-          "departure_time": "42:15:00"
+          "departure_time": "42:15:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "SBY",
@@ -597,7 +661,8 @@
           "lon": -111.856649,
           "stop_sequence": 26,
           "arrival_time": "44:13:00",
-          "departure_time": "44:21:00"
+          "departure_time": "44:21:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "CUT",
@@ -606,7 +671,8 @@
           "lon": -112.331584,
           "stop_sequence": 27,
           "arrival_time": "44:51:00",
-          "departure_time": "44:51:00"
+          "departure_time": "44:51:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "GPK",
@@ -615,7 +681,8 @@
           "lon": -113.219523,
           "stop_sequence": 28,
           "arrival_time": "45:48:00",
-          "departure_time": "45:48:00"
+          "departure_time": "45:48:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "ESM",
@@ -624,7 +691,8 @@
           "lon": -113.610942,
           "stop_sequence": 29,
           "arrival_time": "46:44:00",
-          "departure_time": "46:44:00"
+          "departure_time": "46:44:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "WGL",
@@ -633,7 +701,8 @@
           "lon": -113.979164,
           "stop_sequence": 30,
           "arrival_time": "47:27:00",
-          "departure_time": "47:27:00"
+          "departure_time": "47:27:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "WFH",
@@ -642,7 +711,8 @@
           "lon": -114.335575,
           "stop_sequence": 31,
           "arrival_time": "48:06:00",
-          "departure_time": "48:21:00"
+          "departure_time": "48:21:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "LIB",
@@ -651,7 +721,8 @@
           "lon": -115.54889,
           "stop_sequence": 32,
           "arrival_time": "50:05:00",
-          "departure_time": "50:05:00"
+          "departure_time": "50:05:00",
+          "stop_timezone": "America/Denver"
         },
         {
           "stop_id": "SPT",
@@ -660,7 +731,8 @@
           "lon": -116.545583,
           "stop_sequence": 33,
           "arrival_time": "51:55:00",
-          "departure_time": "51:55:00"
+          "departure_time": "51:55:00",
+          "stop_timezone": "America/Los_Angeles"
         },
         {
           "stop_id": "SPK",
@@ -669,7 +741,8 @@
           "lon": -117.415455,
           "stop_sequence": 34,
           "arrival_time": "53:44:00",
-          "departure_time": "54:19:00"
+          "departure_time": "54:19:00",
+          "stop_timezone": "America/Los_Angeles"
         },
         {
           "stop_id": "EPH",
@@ -678,7 +751,8 @@
           "lon": -119.549267,
           "stop_sequence": 35,
           "arrival_time": "56:28:00",
-          "departure_time": "56:28:00"
+          "departure_time": "56:28:00",
+          "stop_timezone": "America/Los_Angeles"
         },
         {
           "stop_id": "WEN",
@@ -687,7 +761,8 @@
           "lon": -120.306552,
           "stop_sequence": 36,
           "arrival_time": "57:35:00",
-          "departure_time": "57:45:00"
+          "departure_time": "57:45:00",
+          "stop_timezone": "America/Los_Angeles"
         },
         {
           "stop_id": "LWA",
@@ -696,7 +771,8 @@
           "lon": -120.643965,
           "stop_sequence": 37,
           "arrival_time": "58:18:00",
-          "departure_time": "58:18:00"
+          "departure_time": "58:18:00",
+          "stop_timezone": "America/Los_Angeles"
         },
         {
           "stop_id": "EVR",
@@ -705,7 +781,8 @@
           "lon": -122.197858,
           "stop_sequence": 38,
           "arrival_time": "61:03:00",
-          "departure_time": "61:03:00"
+          "departure_time": "61:03:00",
+          "stop_timezone": "America/Los_Angeles"
         },
         {
           "stop_id": "EDM",
@@ -714,7 +791,8 @@
           "lon": -122.384141,
           "stop_sequence": 39,
           "arrival_time": "61:35:00",
-          "departure_time": "61:35:00"
+          "departure_time": "61:35:00",
+          "stop_timezone": "America/Los_Angeles"
         },
         {
           "stop_id": "SEA",
@@ -723,7 +801,8 @@
           "lon": -122.330161,
           "stop_sequence": 40,
           "arrival_time": "62:29:00",
-          "departure_time": "62:29:00"
+          "departure_time": "62:29:00",
+          "stop_timezone": "America/Los_Angeles"
         }
       ]
     }

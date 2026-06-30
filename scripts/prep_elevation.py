@@ -7,26 +7,43 @@ https://epqs.nationalmap.gov/v1/docs -- free, no API key, backed by the
 3DEP elevation dataset (~0.5m RMSE accuracy). EPQS only covers the
 United States, which is fine for an Amtrak route.
 
-Two modes:
-  --mode stations  Adds "elevation_ft" to every feature in
-                    stations.geojson (one EPQS query per station).
-  --mode profile    Samples the route every --interval-miles (handling
-                    forked routes the same way prep_mile_markers.py
-                    does -- see route_sampling.sample_forked_route) and
-                    queries elevation at each sample, writing a profile
-                    JSON for the elevation-profile chart.
+Three modes:
+  --mode fetch-stations  Queries EPQS once per station in
+                          stations.geojson and writes the results to a
+                          standalone cache file, keyed by amtrak_code
+                          (elevation/<route>-station-elevations.json).
+                          Doesn't touch stations.geojson.
+  --mode apply-stations   Merges that cache file's elevation_ft into
+                          stations.geojson by amtrak_code -- no network
+                          calls, so it's safe to re-run every time
+                          stations.geojson is regenerated (e.g. by
+                          prep_amtrak_route.py, which doesn't preserve
+                          elevation_ft).
+  --mode profile          Samples the route every --interval-miles (handling
+                          forked routes the same way prep_mile_markers.py
+                          does -- see route_sampling.sample_forked_route) and
+                          queries elevation at each sample, writing a profile
+                          JSON for the elevation-profile chart.
 
-EPQS has no batch endpoint -- this script queries sequentially with a
-short delay between requests as a courtesy to the free public service,
-so a full profile run (a few hundred points) can take several minutes.
-Individual requests are retried a few times with a short backoff on
-timeout/connection errors before giving up, since a transient drop
-shouldn't have to kill a multi-minute run.
+Station elevation used to be fetched and written to stations.geojson in
+one step, but that meant every stations.geojson rebuild re-queried EPQS
+for all ~46 stations even though elevation never changes. Splitting
+fetch from apply means rebuilding stations.geojson only needs the
+instant, network-free apply step -- fetch only needs re-running if a
+station's location actually changes or a new station is added.
+
+EPQS has no batch endpoint -- fetch-stations and profile query
+sequentially with a short delay between requests as a courtesy to the
+free public service, so a full profile run (a few hundred points) can
+take several minutes. Individual requests are retried a few times with
+a short backoff on timeout/connection errors before giving up, since a
+transient drop shouldn't have to kill a multi-minute run.
 
 Requires: only the standard library.
 
 Usage (run from the repo root):
-  python3 scripts/prep_elevation.py --mode stations
+  python3 scripts/prep_elevation.py --mode fetch-stations
+  python3 scripts/prep_elevation.py --mode apply-stations
   python3 scripts/prep_elevation.py --mode profile --interval-miles 5
 
   # a different, unforked route -- --start/--branch are required for any
@@ -71,16 +88,52 @@ def fetch_elevation_ft(lon, lat):
             time.sleep(EPQS_RETRY_BACKOFF_SECONDS)
 
 
-def add_station_elevations(stations_path, delay):
+def fetch_station_elevations(stations_path, delay):
+    """
+    Query EPQS once per station in stations_path and return the results
+    keyed by amtrak_code, e.g. {"CHI": {"lon": ..., "lat": ...,
+    "elevation_ft": ...}, ...}. Doesn't touch stations.geojson -- see
+    apply_station_elevations for the network-free step that merges this
+    into it.
+    """
     data = json.loads(stations_path.read_text())
+    elevations = {}
     for feature in data["features"]:
+        code = feature["properties"].get("amtrak_code")
         lon, lat = feature["geometry"]["coordinates"]
         elevation = fetch_elevation_ft(lon, lat)
-        feature["properties"]["elevation_ft"] = elevation
-        print(f"  {feature['properties'].get('amtrak_code')}: {elevation} ft")
+        elevations[code] = {"lon": lon, "lat": lat, "elevation_ft": elevation}
+        print(f"  {code}: {elevation} ft")
         time.sleep(delay)
+    return elevations
+
+
+def apply_station_elevations(stations_path, elevations_path):
+    """
+    Merge a station-elevations cache (see fetch_station_elevations) into
+    stations.geojson by amtrak_code. No network calls -- safe to re-run
+    every time stations.geojson is regenerated.
+    """
+    if not elevations_path.exists():
+        raise SystemExit(f"{elevations_path} doesn't exist yet -- run --mode fetch-stations first")
+
+    data = json.loads(stations_path.read_text())
+    elevations = json.loads(elevations_path.read_text())
+
+    missing = []
+    for feature in data["features"]:
+        code = feature["properties"].get("amtrak_code")
+        entry = elevations.get(code)
+        if entry is None:
+            missing.append(code)
+            continue
+        feature["properties"]["elevation_ft"] = entry["elevation_ft"]
+
     stations_path.write_text(json.dumps(data, indent=2))
     print(f"wrote {stations_path} ({len(data['features'])} stations)")
+    if missing:
+        print(f"\nWARNING: no cached elevation for {len(missing)} station(s), left elevation_ft unset: {missing}")
+        print("re-run --mode fetch-stations to pick up new/moved stations")
 
 
 def build_profile(route_source, start, branches, interval_miles, delay):
@@ -104,10 +157,11 @@ def build_profile(route_source, start, branches, interval_miles, delay):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--mode", choices=["stations", "profile"], required=True)
+    parser.add_argument("--mode", choices=["fetch-stations", "apply-stations", "profile"], required=True)
     parser.add_argument("--route", default=DEFAULT_ROUTE, help="Route name, used to derive default --expedition/--route-source/--profile-out paths (profile mode only)")
     parser.add_argument("--expedition", default=None, help="Expedition folder name under expeditions/ -- defaults to the slugified --route name")
     parser.add_argument("--stations-path", type=Path, default=None, help="Defaults to <expedition>/data/stations/stations.geojson")
+    parser.add_argument("--elevations-path", type=Path, default=None, help="Defaults to <expedition>/data/elevation/<slugified-route>-station-elevations.json (fetch-stations/apply-stations modes only)")
     parser.add_argument("--route-source", type=Path, default=None, help="Defaults to <expedition>/data/routes/<slugified-route>.geojson (profile mode only)")
     parser.add_argument("--profile-out", type=Path, default=None, help="Defaults to <expedition>/data/elevation/<slugified-route>-profile.json (profile mode only)")
     parser.add_argument("--interval-miles", type=float, default=5, help="Distance between profile sample points")
@@ -125,9 +179,15 @@ def main():
 
     data_dir = expedition_data_dir(args.expedition or slugify(args.route))
     stations_path = args.stations_path or (data_dir / "stations" / "stations.geojson")
+    elevations_path = args.elevations_path or (data_dir / "elevation" / f"{slugify(args.route)}-station-elevations.json")
 
-    if args.mode == "stations":
-        add_station_elevations(stations_path, args.delay)
+    if args.mode == "fetch-stations":
+        elevations = fetch_station_elevations(stations_path, args.delay)
+        elevations_path.parent.mkdir(parents=True, exist_ok=True)
+        elevations_path.write_text(json.dumps(elevations, indent=2))
+        print(f"wrote {elevations_path} ({len(elevations)} station(s))")
+    elif args.mode == "apply-stations":
+        apply_station_elevations(stations_path, elevations_path)
     else:
         route_source = args.route_source or (data_dir / "routes" / f"{slugify(args.route)}.geojson")
         profile_out = args.profile_out or (data_dir / "elevation" / f"{slugify(args.route)}-profile.json")

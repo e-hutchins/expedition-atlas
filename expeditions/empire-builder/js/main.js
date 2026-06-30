@@ -27,23 +27,86 @@ const DATA_URLS = {
 };
 
 /**
- * Format a GTFS time string ("HH:MM:SS") as a 12-hour clock time.
- * GTFS allows hours >= 24 to represent times after midnight on a later
- * day of a multi-day trip (Empire Builder takes ~46 hours end to end),
- * so this also appends a "+Nd" suffix when that happens.
+ * GTFS times in Amtrak's feed are all written in one reference
+ * timezone, regardless of which station they belong to -- confirmed by
+ * checking that travel speed between consecutive stops stays smooth
+ * straight through every real timezone boundary on the route
+ * (Central/Mountain at Williston, Mountain/Pacific near Sandpoint), with
+ * no artificial jump, which there would be if times were already each
+ * station's local time.
+ *
+ * That check alone can't tell you *which* zone is the reference, though
+ * -- only that there is one. That's agency.txt's agency_timezone for
+ * Amtrak's main agency (id 51, which owns the Empire Builder route in
+ * routes.txt): America/New_York, i.e. Eastern, not Chicago/Central
+ * despite Chicago being the route's hub. Each station's actual
+ * timezone (stops.txt's stop_timezone field, carried into the timetable
+ * JSON by prep_amtrak_timetable.py) is used below to shift the
+ * displayed time to that station's local time.
+ */
+const REFERENCE_TIMEZONE = "America/New_York";
+
+// Standard (non-DST) UTC offset in hours for each timezone this feed
+// uses. Only the *difference* between two zones is used below, and that
+// difference is the same with or without DST -- the contiguous-US zones
+// here all observe DST on the same dates, so the table doesn't need to
+// track DST itself, just each zone's relative position.
+const ZONE_UTC_OFFSET_HOURS = {
+  "America/New_York": -5,
+  "America/Chicago": -6,
+  "America/Denver": -7,
+  "America/Los_Angeles": -8,
+};
+
+/**
+ * Current timezone abbreviation (e.g. "CDT", "MST") for an IANA zone,
+ * via the browser's Intl API against today's date. This is what makes
+ * the label DST-aware without a DST rules table of our own -- the
+ * browser already knows whether daylight time is in effect today.
+ *
+ * @param {string} timezone - IANA zone name, e.g. "America/Denver"
+ * @returns {string} e.g. "MDT", or "" if the zone isn't recognized
+ */
+function getZoneAbbreviation(timezone) {
+  try {
+    const parts = new Intl.DateTimeFormat("en-US", { timeZone: timezone, timeZoneName: "short" }).formatToParts(new Date());
+    return (parts.find((part) => part.type === "timeZoneName") || {}).value || "";
+  } catch (e) {
+    return "";
+  }
+}
+
+/**
+ * Format a GTFS time string ("HH:MM:SS"), written in REFERENCE_TIMEZONE,
+ * as a 12-hour clock time in a specific station's local timezone, with
+ * that timezone's abbreviation appended. GTFS allows hours >= 24 to
+ * represent times after midnight on a later day of a multi-day trip
+ * (Empire Builder takes ~46 hours end to end); shifting timezones can
+ * itself cross a day boundary, so the day-offset is recomputed after
+ * applying the shift rather than carried over from the raw GTFS hour.
  *
  * @param {string} gtfsTime - e.g. "16:05:00" or "62:30:00"
- * @returns {string} e.g. "4:05 PM" or "2:30 PM (+2d)"
+ * @param {string} [stopTimezone] - the station's IANA timezone (from
+ *   stop_timezone); falls back to no shift/label if missing
+ * @returns {string} e.g. "5:35 PM CDT" or "12:17 PM PDT (+2d)"
  */
-function formatGtfsTime(gtfsTime) {
+function formatGtfsTime(gtfsTime, stopTimezone) {
   const [hh, mm] = gtfsTime.split(":").map(Number);
-  const dayOffset = Math.floor(hh / 24);
-  const hour24 = hh % 24;
+  const referenceOffset = ZONE_UTC_OFFSET_HOURS[REFERENCE_TIMEZONE];
+  const targetOffset = (stopTimezone && ZONE_UTC_OFFSET_HOURS[stopTimezone]) ?? referenceOffset;
+  const shiftMinutes = (targetOffset - referenceOffset) * 60;
+
+  const totalMinutes = hh * 60 + mm + shiftMinutes;
+  const dayOffset = Math.floor(totalMinutes / (24 * 60));
+  const hour24 = ((Math.floor(totalMinutes / 60) % 24) + 24) % 24;
+  const minute = ((totalMinutes % 60) + 60) % 60;
+
   const period = hour24 >= 12 ? "PM" : "AM";
   const hour12 = hour24 % 12 || 12;
-  const mmStr = String(mm).padStart(2, "0");
+  const mmStr = String(minute).padStart(2, "0");
+  const zoneLabel = stopTimezone ? getZoneAbbreviation(stopTimezone) : "";
   const suffix = dayOffset > 0 ? ` (+${dayOffset}d)` : "";
-  return `${hour12}:${mmStr} ${period}${suffix}`;
+  return `${hour12}:${mmStr} ${period}${zoneLabel ? ` ${zoneLabel}` : ""}${suffix}`;
 }
 
 /**
@@ -65,6 +128,7 @@ function buildStopIndex(timetable) {
         headsign: trip.headsign,
         arrival: stop.arrival_time,
         departure: stop.departure_time,
+        timezone: stop.stop_timezone,
       });
       index.set(stop.stop_id, entries);
     });
@@ -155,16 +219,18 @@ function buildStationPopupHtml(p, direction, stopIndexByDirection) {
     ? entries
         .map(
           (e) =>
-            `Train ${e.trainNumber} &rarr; ${e.headsign}<br>arr ${formatGtfsTime(e.arrival)} / dep ${formatGtfsTime(e.departure)}`
+            `Train ${e.trainNumber} &rarr; ${e.headsign}<br>arr ${formatGtfsTime(e.arrival, e.timezone)} / dep ${formatGtfsTime(e.departure, e.timezone)}`
         )
         .join("<br><br>")
     : `<em>No ${directionLabel.toLowerCase()} schedule data available.</em>`;
 
   const elevationHtml = p.elevation_ft != null ? `Elevation: ${p.elevation_ft} ft<br>` : "";
+  const mileageHtml = p.mile != null ? `Mile ${p.mile}${p.branch ? ` (${p.branch} branch)` : ""}<br>` : "";
 
   return `
     <strong>${p.name || "Station"}</strong><br>
     ${p.amtrak_code || ""}${place ? ` &middot; ${place}` : ""}<br>
+    ${mileageHtml}
     ${elevationHtml}
     <hr>
     <strong>${directionLabel}</strong><br>

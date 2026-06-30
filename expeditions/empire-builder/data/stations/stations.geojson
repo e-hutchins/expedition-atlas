@@ -15,6 +15,8 @@
         "amtrak_code": "BNG",
         "city": "Bingen",
         "state": "WA",
+        "mile": 2168.3,
+        "branch": "portland",
         "elevation_ft": 110.0
       }
     },
@@ -32,6 +34,7 @@
         "amtrak_code": "BRO",
         "city": "Browning",
         "state": "MT",
+        "mile": 1525.8,
         "elevation_ft": 4468.0
       }
     },
@@ -49,6 +52,7 @@
         "amtrak_code": "CBS",
         "city": "Columbus",
         "state": "WI",
+        "mile": 149.7,
         "elevation_ft": 844.3
       }
     },
@@ -66,6 +70,7 @@
         "amtrak_code": "CHI",
         "city": "Chicago",
         "state": "IL",
+        "mile": 0.0,
         "elevation_ft": 593.1
       }
     },
@@ -83,6 +88,7 @@
         "amtrak_code": "CUT",
         "city": "Cut Bank",
         "state": "MT",
+        "mile": 1492.4,
         "elevation_ft": 3754.4
       }
     },
@@ -100,6 +106,7 @@
         "amtrak_code": "DLK",
         "city": "Detroit Lakes",
         "state": "MN",
+        "mile": 610.7,
         "elevation_ft": 1367.1
       }
     },
@@ -117,6 +124,7 @@
         "amtrak_code": "DVL",
         "city": "Devils Lake",
         "state": "ND",
+        "mile": 818.9,
         "elevation_ft": 1466.5
       }
     },
@@ -134,6 +142,8 @@
         "amtrak_code": "EDM",
         "city": "Edmonds",
         "state": "WA",
+        "mile": 2175.7,
+        "branch": "seattle",
         "elevation_ft": 13.0
       }
     },
@@ -151,6 +161,8 @@
         "amtrak_code": "EPH",
         "city": "Ephrata",
         "state": "WA",
+        "mile": 1987.6,
+        "branch": "seattle",
         "elevation_ft": 1276.9
       }
     },
@@ -168,6 +180,7 @@
         "amtrak_code": "ESM",
         "city": "Essex",
         "state": "MT",
+        "mile": 1568.3,
         "elevation_ft": 3877.5
       }
     },
@@ -185,6 +198,8 @@
         "amtrak_code": "EVR",
         "city": "Everett",
         "state": "WA",
+        "mile": 2159.2,
+        "branch": "seattle",
         "elevation_ft": 60.3
       }
     },
@@ -202,6 +217,7 @@
         "amtrak_code": "FAR",
         "city": "Fargo",
         "state": "ND",
+        "mile": 659.2,
         "elevation_ft": 906.2
       }
     },
@@ -219,6 +235,7 @@
         "amtrak_code": "GFK",
         "city": "Grand Forks",
         "state": "ND",
+        "mile": 734.0,
         "elevation_ft": 842.1
       }
     },
@@ -236,6 +253,7 @@
         "amtrak_code": "GGW",
         "city": "Glasgow",
         "state": "MT",
+        "mile": 1211.8,
         "elevation_ft": 2093.7
       }
     },
@@ -253,6 +271,7 @@
         "amtrak_code": "GLN",
         "city": "Glenview",
         "state": "IL",
+        "mile": 17.6,
         "elevation_ft": 633.7
       }
     },
@@ -270,6 +289,7 @@
         "amtrak_code": "GPK",
         "city": "East Glacier Park",
         "state": "MT",
+        "mile": 1539.1,
         "elevation_ft": 4811.0
       }
     },
@@ -287,6 +307,7 @@
         "amtrak_code": "HAV",
         "city": "Havre",
         "state": "MT",
+        "mile": 1364.2,
         "elevation_ft": 2488.0
       }
     },
@@ -304,6 +325,7 @@
         "amtrak_code": "LIB",
         "city": "Libby",
         "state": "MT",
+        "mile": 1718.8,
         "elevation_ft": 2067.8
       }
     },
@@ -321,6 +343,7 @@
         "amtrak_code": "LSE",
         "city": "La Crosse",
         "state": "WI",
+        "mile": 280.6,
         "elevation_ft": 648.5
       }
     },
@@ -338,6 +361,8 @@
         "amtrak_code": "LWA",
         "city": "Leavenworth",
         "state": "WA",
+        "mile": 2061.7,
+        "branch": "seattle",
         "elevation_ft": 1224.8
       }
     },
@@ -355,6 +380,7 @@
         "amtrak_code": "MAL",
         "city": "Malta",
         "state": "MT",
+        "mile": 1277.2,
         "elevation_ft": 2253.8
       }
     },
@@ -372,6 +398,7 @@
         "amtrak_code": "MKE",
         "city": "Milwaukee",
         "state": "WI",
+        "mile": 85.7,
         "elevation_ft": 587.2
       }
     },
@@ -389,6 +416,7 @@
         "amtrak_code": "MOT",
         "city": "Minot",
         "state": "ND",
+        "mile": 936.9,
         "elevation_ft": 1558.0
       }
     },
@@ -406,6 +434,7 @@
         "amtrak_code": "MSP",
         "city": "St. Paul",
         "state": "MN",
+        "mile": 409.2,
         "elevation_ft": 708.8
       }
     },
@@ -423,6 +452,8 @@
         "amtrak_code": "PDX",
         "city": "Portland",
         "state": "OR",
+        "mile": 2243.5,
+        "branch": "portland",
         "elevation_ft": 34.4
       }
     },
@@ -440,6 +471,7 @@
         "amtrak_code": "POG",
         "city": "Portage",
         "state": "WI",
+        "mile": 177.9,
         "elevation_ft": 812.4
       }
     },
@@ -457,6 +489,8 @@
         "amtrak_code": "PSC",
         "city": "Pasco",
         "state": "WA",
+        "mile": 2013.1,
+        "branch": "portland",
         "elevation_ft": 387.2
       }
     },
@@ -474,6 +508,7 @@
         "amtrak_code": "RDW",
         "city": "Red Wing",
         "state": "MN",
+        "mile": 369.4,
         "elevation_ft": 684.4
       }
     },
@@ -491,6 +526,7 @@
         "amtrak_code": "RUG",
         "city": "Rugby",
         "state": "ND",
+        "mile": 875.9,
         "elevation_ft": 1560.6
       }
     },
@@ -508,6 +544,7 @@
         "amtrak_code": "SBY",
         "city": "Shelby",
         "state": "MT",
+        "mile": 1468.3,
         "elevation_ft": 3280.2
       }
     },
@@ -525,6 +562,7 @@
         "amtrak_code": "SCD",
         "city": "St. Cloud",
         "state": "MN",
+        "mile": 483.6,
         "elevation_ft": 1028.0
       }
     },
@@ -542,6 +580,8 @@
         "amtrak_code": "SEA",
         "city": "Seattle",
         "state": "WA",
+        "mile": 2193.0,
+        "branch": "seattle",
         "elevation_ft": 18.0
       }
     },
@@ -559,6 +599,7 @@
         "amtrak_code": "SPK",
         "city": "Spokane",
         "state": "WA",
+        "mile": 1868.9,
         "elevation_ft": 1910.1
       }
     },
@@ -576,6 +617,7 @@
         "amtrak_code": "SPL",
         "city": "Staples",
         "state": "MN",
+        "mile": 548.8,
         "elevation_ft": 1277.9
       }
     },
@@ -593,6 +635,7 @@
         "amtrak_code": "SPT",
         "city": "Sandpoint",
         "state": "ID",
+        "mile": 1802.6,
         "elevation_ft": 2093.2
       }
     },
@@ -610,6 +653,7 @@
         "amtrak_code": "STN",
         "city": "Stanley",
         "state": "ND",
+        "mile": 990.2,
         "elevation_ft": 2253.5
       }
     },
@@ -627,6 +671,7 @@
         "amtrak_code": "TOH",
         "city": "Tomah",
         "state": "WI",
+        "mile": 239.7,
         "elevation_ft": 959.1
       }
     },
@@ -644,6 +689,8 @@
         "amtrak_code": "VAN",
         "city": "Vancouver",
         "state": "WA",
+        "mile": 2233.6,
+        "branch": "portland",
         "elevation_ft": 52.4
       }
     },
@@ -661,6 +708,7 @@
         "amtrak_code": "WDL",
         "city": "Wisconsin Dells",
         "state": "WI",
+        "mile": 194.7,
         "elevation_ft": 896.5
       }
     },
@@ -678,6 +726,8 @@
         "amtrak_code": "WEN",
         "city": "Wenatchee",
         "state": "WA",
+        "mile": 2039.7,
+        "branch": "seattle",
         "elevation_ft": 650.1
       }
     },
@@ -695,6 +745,7 @@
         "amtrak_code": "WFH",
         "city": "Whitefish",
         "state": "MT",
+        "mile": 1617.4,
         "elevation_ft": 3037.2
       }
     },
@@ -712,6 +763,7 @@
         "amtrak_code": "WGL",
         "city": "West Glacier",
         "state": "MT",
+        "mile": 1594.8,
         "elevation_ft": 3219.8
       }
     },
@@ -729,6 +781,8 @@
         "amtrak_code": "WIH",
         "city": "Wishram",
         "state": "WA",
+        "mile": 2138.0,
+        "branch": "portland",
         "elevation_ft": 175.6
       }
     },
@@ -746,6 +800,7 @@
         "amtrak_code": "WIN",
         "city": "Winona",
         "state": "MN",
+        "mile": 307.2,
         "elevation_ft": 655.9
       }
     },
@@ -763,6 +818,7 @@
         "amtrak_code": "WPT",
         "city": "Wolf Point",
         "state": "MT",
+        "mile": 1162.4,
         "elevation_ft": 2002.7
       }
     },
@@ -780,6 +836,7 @@
         "amtrak_code": "WTN",
         "city": "Williston",
         "state": "ND",
+        "mile": 1056.3,
         "elevation_ft": 1861.1
       }
     }

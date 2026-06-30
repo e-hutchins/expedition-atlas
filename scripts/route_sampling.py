@@ -183,24 +183,21 @@ def resolve_start_and_branches(route, start, branches, default_route, default_st
     raise SystemExit("--start and --branch must be provided together")
 
 
-def sample_forked_route(multiline_coords, start_lonlat, branches, interval_miles):
+def build_branch_paths(multiline_coords, start_lonlat, branches):
     """
-    Sample a route every interval_miles, handling routes that fork into
-    more than one branch (e.g. Empire Builder splitting at Spokane into
-    Seattle and Portland sections). Each named branch endpoint gets its
-    own path from start_lonlat; the longest shared prefix of those paths
-    is the trunk (mileage measured from start_lonlat), and samples past
-    that point are tagged with which branch they're on. A route with a
-    single branch (no fork) just gets every sample tagged branch=None.
+    Build the lon/lat coordinate path from start_lonlat to each named
+    branch endpoint, plus the shared trunk length. Factored out of
+    sample_forked_route() so callers that need the raw paths -- e.g.
+    projecting a station onto the route, rather than sampling it at
+    fixed intervals -- don't have to duplicate the graph/path-finding
+    logic.
 
     @param multiline_coords: the route's GeoJSON MultiLineString sub-lines
     @param start_lonlat: (lon, lat) of the route's starting endpoint
     @param branches: dict of {branch_name: (lon, lat)} endpoint per branch
-    @param interval_miles: distance between samples
-    @returns: (samples, trunk_length_miles) where samples is a list of
-        {"mile": float, "lon": float, "lat": float, "branch": str or None},
-        trunk samples first (sorted by mile), then each branch's samples
-        in `branches` order (sorted by mile)
+    @returns: (path_coords_by_branch, trunk_length_miles) where
+        path_coords_by_branch is {branch_name: [[lon, lat], ...]}, each
+        path running from start_lonlat to that branch's endpoint
     """
     node_coords, edges = build_route_graph(multiline_coords)
     start_node = nearest_node(node_coords, *start_lonlat)
@@ -224,6 +221,30 @@ def sample_forked_route(multiline_coords, start_lonlat, branches, interval_miles
         common_len += 1
     trunk_length_miles = sum(edges[i]["length_miles"] for i, _ in all_segment_lists[0][:common_len])
 
+    return path_coords_by_branch, trunk_length_miles
+
+
+def sample_forked_route(multiline_coords, start_lonlat, branches, interval_miles):
+    """
+    Sample a route every interval_miles, handling routes that fork into
+    more than one branch (e.g. Empire Builder splitting at Spokane into
+    Seattle and Portland sections). Each named branch endpoint gets its
+    own path from start_lonlat; the longest shared prefix of those paths
+    is the trunk (mileage measured from start_lonlat), and samples past
+    that point are tagged with which branch they're on. A route with a
+    single branch (no fork) just gets every sample tagged branch=None.
+
+    @param multiline_coords: the route's GeoJSON MultiLineString sub-lines
+    @param start_lonlat: (lon, lat) of the route's starting endpoint
+    @param branches: dict of {branch_name: (lon, lat)} endpoint per branch
+    @param interval_miles: distance between samples
+    @returns: (samples, trunk_length_miles) where samples is a list of
+        {"mile": float, "lon": float, "lat": float, "branch": str or None},
+        trunk samples first (sorted by mile), then each branch's samples
+        in `branches` order (sorted by mile)
+    """
+    path_coords_by_branch, trunk_length_miles = build_branch_paths(multiline_coords, start_lonlat, branches)
+
     trunk_samples = {}
     branch_samples_by_name = {name: [] for name in branches}
     for name, coords in path_coords_by_branch.items():
@@ -240,3 +261,89 @@ def sample_forked_route(multiline_coords, start_lonlat, branches, interval_miles
         samples.extend({**point, "branch": name} for point in ordered)
 
     return samples, trunk_length_miles
+
+
+def _project_onto_segment(lon1, lat1, lon2, lat2, lon, lat):
+    """
+    Project (lon, lat) onto the segment (lon1,lat1)-(lon2,lat2) using a
+    local equirectangular approximation (longitude scaled by cos(latitude)
+    at the segment's midpoint) -- accurate enough for the short segments
+    in a simplified route line; avoids pulling in a real geodesic
+    projection library for this.
+
+    @returns: (t, distance_miles) -- t in [0, 1] is how far along the
+        segment the projection falls, distance_miles is the great-circle
+        distance from (lon, lat) to that projected point
+    """
+    lat0 = math.radians((lat1 + lat2) / 2)
+    scale = math.cos(lat0)
+    x1, y1 = lon1 * scale, lat1
+    x2, y2 = lon2 * scale, lat2
+    px, py = lon * scale, lat
+
+    dx, dy = x2 - x1, y2 - y1
+    seg_len_sq = dx * dx + dy * dy
+    if seg_len_sq == 0:
+        t = 0.0
+    else:
+        t = ((px - x1) * dx + (py - y1) * dy) / seg_len_sq
+        t = max(0.0, min(1.0, t))
+
+    proj_lon = lon1 + t * (lon2 - lon1)
+    proj_lat = lat1 + t * (lat2 - lat1)
+    return t, haversine_miles(lon, lat, proj_lon, proj_lat)
+
+
+def project_point_onto_path(coords, lon, lat):
+    """
+    Project (lon, lat) onto a [lon, lat] polyline, returning the
+    cumulative mile distance from coords[0] to the closest point on the
+    line, and how far off the line (lon, lat) actually is. The distance
+    is what lets a caller comparing several candidate paths -- e.g. a
+    forked route's branches -- pick the one the point actually belongs to.
+
+    @param coords: [[lon, lat], ...] vertices, in order
+    @param lon, lat: the point to project
+    @returns: (mile, distance_off_route_miles)
+    """
+    best_mile, best_dist = 0.0, math.inf
+    cumulative = 0.0
+    for i in range(len(coords) - 1):
+        lon1, lat1 = coords[i]
+        lon2, lat2 = coords[i + 1]
+        seg_len = haversine_miles(lon1, lat1, lon2, lat2)
+        t, dist = _project_onto_segment(lon1, lat1, lon2, lat2, lon, lat)
+        if dist < best_dist:
+            best_dist = dist
+            best_mile = cumulative + t * seg_len
+        cumulative += seg_len
+    return best_mile, best_dist
+
+
+def project_station_onto_route(multiline_coords, start_lonlat, branches, lon, lat):
+    """
+    Find a point's (e.g. a station's) distance along a (possibly forked)
+    route from start_lonlat, and which branch it's on past the fork
+    (None if it's on the shared trunk). Projects onto every branch's
+    path and keeps whichever projection the point is actually closest
+    to -- needed because past the fork, each branch is a distinct line,
+    and a point near the junction could be spatially close to more than
+    one of them.
+
+    @param multiline_coords: the route's GeoJSON MultiLineString sub-lines
+    @param start_lonlat: (lon, lat) of the route's starting endpoint
+    @param branches: dict of {branch_name: (lon, lat)} endpoint per branch
+    @param lon, lat: the point to locate
+    @returns: (mile, branch) -- branch is None for trunk points
+    """
+    path_coords_by_branch, trunk_length_miles = build_branch_paths(multiline_coords, start_lonlat, branches)
+
+    best_mile, best_dist, best_branch = 0.0, math.inf, None
+    for name, coords in path_coords_by_branch.items():
+        mile, dist = project_point_onto_path(coords, lon, lat)
+        if dist < best_dist:
+            best_dist = dist
+            best_mile = mile
+            best_branch = None if mile <= trunk_length_miles + 1e-6 else name
+
+    return best_mile, best_branch

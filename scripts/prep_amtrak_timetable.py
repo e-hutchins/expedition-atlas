@@ -75,6 +75,7 @@ def build_timetables(route_name, raw_dir, direction_labels):
                     "stop_sequence": int(row["stop_sequence"]),
                     "arrival_time": row["arrival_time"],
                     "departure_time": row["departure_time"],
+                    "stop_timezone": stop.get("stop_timezone"),
                 }
             )
 

@@ -27,11 +27,21 @@ Modular by design: defaults below reproduce the original Empire
 Builder run, but every input/output path and the route name are CLI
 flags so this script can prep additional Amtrak routes later.
 
+Each station also gets a "mile" property (distance along the route
+from --start, in the same units/method as prep_mile_markers.py) and,
+past a fork, a "branch" property -- computed by projecting the
+station onto the route line (see route_sampling.project_station_onto_route).
+--start/--branch are optional only for Empire Builder; required
+together for any other route, since there's no way to derive a
+route's geography from its name alone.
+
 Requires: shapely (pip install shapely)
 
 Usage (run from the repo root):
   python scripts/prep_amtrak_route.py
-  python scripts/prep_amtrak_route.py --route "California Zephyr" --route-out expeditions/empire-builder/data/routes/california-zephyr.geojson
+  python scripts/prep_amtrak_route.py \
+      --route "California Zephyr" --expedition california-zephyr \
+      --start "-87.6298,41.8786" --branch "emeryville:-122.2885,37.8406"
 """
 
 import argparse
@@ -41,8 +51,9 @@ from pathlib import Path
 
 from shapely.geometry import Point, shape, mapping
 
-from config import NTAD_DIR, DEFAULT_ROUTE, expedition_data_dir
-from helpers import slugify
+from config import NTAD_DIR, DEFAULT_ROUTE, EMPIRE_BUILDER_START, EMPIRE_BUILDER_BRANCHES, expedition_data_dir
+from helpers import slugify, parse_lonlat, parse_branch
+from route_sampling import resolve_start_and_branches, project_station_onto_route
 
 
 def parse_station_list(path):
@@ -85,7 +96,7 @@ def prep_route(route_name, routes_source, out_path, simplify_tolerance):
     return geom
 
 
-def prep_stations(route_geom, stations_source, out_path, buffer_deg, station_list_path):
+def prep_stations(route_geom, stations_source, out_path, buffer_deg, station_list_path, route_multiline, start, branches):
     region = route_geom.buffer(buffer_deg)
     source = json.loads(stations_source.read_text())
 
@@ -108,23 +119,25 @@ def prep_stations(route_geom, stations_source, out_path, buffer_deg, station_lis
             dropped.append((code, name))
             continue
 
-        matches.append(
-            {
-                "type": "Feature",
-                "geometry": feat["geometry"],
-                "properties": {
-                    "name": name,
-                    "amtrak_code": code,
-                    "city": p.get("City"),
-                    "state": p.get("State"),
-                    # arrival, departure, elevation_ft from the
-                    # project-guidelines/DATA.md schema are NOT present
-                    # in this source -- they need a timetable / DEM
-                    # source and are intentionally left out rather than
-                    # invented.
-                },
-            }
-        )
+        lon, lat = feat["geometry"]["coordinates"]
+        mile, branch = project_station_onto_route(route_multiline, start, branches, lon, lat)
+
+        properties = {
+            "name": name,
+            "amtrak_code": code,
+            "city": p.get("City"),
+            "state": p.get("State"),
+            "mile": round(mile, 1),
+            # arrival, departure, elevation_ft from the
+            # project-guidelines/DATA.md schema are NOT present
+            # in this source -- they need a timetable / DEM
+            # source and are intentionally left out rather than
+            # invented.
+        }
+        if branch is not None:
+            properties["branch"] = branch
+
+        matches.append({"type": "Feature", "geometry": feat["geometry"], "properties": properties})
 
     output = {"type": "FeatureCollection", "features": matches}
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -157,15 +170,32 @@ def main():
     parser.add_argument("--station-list", type=Path, default=None, help="Optional markdown file of official stops, one per line ending in (CODE), used to filter out shared-corridor false positives. Defaults to <expedition>/data/station_list.md")
     parser.add_argument("--simplify-tolerance", type=float, default=0.0005, help="Degrees; ~50m, cuts ~45k points down to ~2.4k")
     parser.add_argument("--station-buffer", type=float, default=0.02, help="Degrees; ~2km, stable result across 0.01-0.05 in testing")
+    parser.add_argument("--start", type=parse_lonlat, default=None, help='"lon,lat" of the route\'s starting endpoint, used to compute each station\'s mileage -- required for any route other than Empire Builder')
+    parser.add_argument(
+        "--branch",
+        action="append",
+        dest="branches",
+        type=parse_branch,
+        default=None,
+        help='"name:lon,lat" of a branch endpoint -- repeatable. A route with no fork just needs one. Required (with --start) for any route other than Empire Builder.',
+    )
     args = parser.parse_args()
 
     data_dir = expedition_data_dir(args.expedition or slugify(args.route))
     route_out = args.route_out or (data_dir / "routes" / f"{slugify(args.route)}.geojson")
     stations_out = args.stations_out or (data_dir / "stations" / "stations.geojson")
     station_list = args.station_list or (data_dir / "station_list.md")
+    start, branches = resolve_start_and_branches(
+        args.route, args.start, args.branches, DEFAULT_ROUTE, EMPIRE_BUILDER_START, EMPIRE_BUILDER_BRANCHES
+    )
 
     route_geom = prep_route(args.route, args.routes_source, route_out, args.simplify_tolerance)
-    prep_stations(route_geom, args.stations_source, stations_out, args.station_buffer, station_list)
+    route_multiline = (
+        [list(line.coords) for line in route_geom.geoms]
+        if route_geom.geom_type == "MultiLineString"
+        else [list(route_geom.coords)]
+    )
+    prep_stations(route_geom, args.stations_source, stations_out, args.station_buffer, station_list, route_multiline, start, branches)
 
 
 if __name__ == "__main__":

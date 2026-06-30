@@ -24,10 +24,14 @@
   "amtrak_code": "...",
   "city": "...",
   "state": "...",
+  "mile": 0,
+  "branch": "...",
   "elevation_ft": 0
 }
 
-`elevation_ft` is optional -- it's filled in by `scripts/prep_elevation.py --mode stations` from the USGS Elevation Point Query Service. It was deliberately left out of this schema earlier because we had no real source for it; now that we do, it's back, sourced rather than invented.
+`mile` is the station's distance along the route from its starting endpoint, and `branch` follows the same convention as Mile Marker below (only present past a route's fork point) -- both computed by `scripts/prep_amtrak_route.py` via `route_sampling.project_station_onto_route`.
+
+`elevation_ft` is optional -- it's added to stations.geojson by `scripts/prep_elevation.py --mode apply-stations`, which merges a cached station-elevations file (`data/elevation/<route>-station-elevations.json`, written once by `--mode fetch-stations` from the USGS Elevation Point Query Service) by `amtrak_code`. The fetch/apply split means a stations.geojson rebuild (e.g. via `prep_amtrak_route.py`) only needs the network-free apply step, not a fresh EPQS query per station.
 
 ### Mile Marker
 {
