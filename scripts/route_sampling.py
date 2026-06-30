@@ -158,6 +158,31 @@ def path_to_coords(edges, path_segments):
     return coords
 
 
+def resolve_start_and_branches(route, start, branches, default_route, default_start, default_branches):
+    """
+    Resolve which --start/--branch endpoints a prep script should use.
+    --start and --branch are optional only for `default_route` (the route
+    a script's built-in defaults describe) -- there's no way to derive a
+    different route's start/fork geography from its name alone, so any
+    other route must supply both explicitly.
+
+    @param route: the --route value the user passed (or its default)
+    @param start: the parsed --start value, or None if omitted
+    @param branches: the parsed --branch values (list of (name, (lon, lat))), or None if omitted
+    @param default_route: the route name --start/--branch are allowed to be omitted for
+    @param default_start: (lon, lat) to use when they're omitted for default_route
+    @param default_branches: dict of {name: (lon, lat)} to use when omitted for default_route
+    @returns: (start, branches) -- branches as a dict of {name: (lon, lat)}
+    """
+    if start is None and branches is None:
+        if route != default_route:
+            raise SystemExit(f'--start and --branch are required for any route other than "{default_route}"')
+        return default_start, default_branches
+    if start is not None and branches is not None:
+        return start, dict(branches)
+    raise SystemExit("--start and --branch must be provided together")
+
+
 def sample_forked_route(multiline_coords, start_lonlat, branches, interval_miles):
     """
     Sample a route every interval_miles, handling routes that fork into
